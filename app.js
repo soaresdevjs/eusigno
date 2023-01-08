@@ -1,61 +1,49 @@
-const express = require('express');
-const app = express();
-const signos = require('./routes/signos')
-const admin = require('./routes/admin')
-const login = require('./routes/login')
-const hbs = require('express-handlebars')
-const mongoose = require('mongoose')
-const passport = require('passport')
-const session = require('express-session')
-const flash = require('connect-flash')
-require('./config/auth')(passport)
+const express = require("express"),
+  app = express(),
+  logger = require("morgan"),
+  hbs = require("express-handlebars"),
+  passport = require("passport"),
+  session = require("express-session"),
+  bodyParser = require("body-parser");
 
-//Configs
-    //Sessions
-app.use(session({
-    secret: 'sasf74a65sf1',
+//require("./database"); No momento você não precisa disso
+
+app.use(logger("dev"));
+app.engine(
+  "hbs",
+  hbs.engine({
+    extname: "hbs",
+    defaultLayout: "main",
+  })
+);
+
+//Coletar informações da form (ISSO É VITAL) -->
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+//<--
+
+app.set("view engine", "hbs");
+app.use(express.static("public"));
+
+//-> Não altere essa sequência.
+require("./config/auth")(passport);
+app.use(
+  session({
+    secret: "sasf74a65sf1",
     resave: false,
     saveUninitialized: true,
-}))
-app.use(passport.initialize())
-app.use(passport.session())
-app.use(flash())
-    //Middleware
-app.use((req, res, next)=>{
-    res.locals.success_msg = req.flash("success_msg")
-    res.locals.error_msg = req.flash("error_msg")
-    next()
-})
-    //Handlebars
-app.engine('hbs', hbs.engine({
-    extname: 'hbs',
-    defaultLayout: 'main'
-})); app.set('view engine','hbs');
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
+//<-
 
-    //Mongoose
-mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost:27017/local',
-    {   useNewUrlParser:true,
-        useUnifiedTopology: true
-    }).then(()=>{
-    console.log("Conectado ao banco de dados!");
-}).catch((err)=>{
-    console.log("Erro ao contectar ao banco de dados. Erro: " + err);
-});
-    //Static content
-app.use(express.static('public'));
+require("./routes")(app); //Sempre carregue as rotas depois do passport.
 
-//Routes
-app.get('/', (req, res)=>{
-    res.render('admin/index', {layout: 'main.hbs'});
-})
-
-app.use('/login', login);
-app.use('/signos', signos);
-app.use('/admin', admin);
-
-
-const PORT = process.env.PORT || 8087
-app.listen(PORT, () =>{
-    console.log(`Servidor rodando na porta http://localhost:${PORT}`)
+const server = app.listen(process.env.PORT || 8087, (port) => {
+  console.log(
+    `Servidor rodando na porta ${server.address().address}:${
+      server.address().port
+    }`
+  );
 });

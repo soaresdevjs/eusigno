@@ -13,11 +13,12 @@ router.get('/', (req, res, next) =>{
     }
 
 })
-
-router.post('/', 
-  passport.authenticate('local', { failureRedirect: '/login?fail=true' }),
-  (req, res) => {
-    res.redirect('/admin');
-  });
+  router.post(
+    "/",
+    passport.authenticate("local", {
+        successRedirect: "/admin",
+        failureRedirect: "?fail=true",
+    })
+);
 
 module.exports = router;
