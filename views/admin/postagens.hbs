@@ -6,24 +6,32 @@
 
     <div class="postagem-container">
         <form class="postagem-form" action="/admin/postagens/novo" method="post">
-            <div class="postagem-select">
-                <label for="signo">Signo:</label>
-                <select name="signo" id="signo">
-                    <option value="null" selected disabled>Escolha o signo</option>
-                    <option value="aries">Áries</option>
-                    <option value="touro">Touro</option>
-                    <option value="gemeos">Gêmeos</option>
-                    <option value="cancer">Câncer</option>
-                    <option value="leao">Leão</option>
-                    <option value="virgem">Virgem</option>
-                    <option value="libra">Libra</option>
-                    <option value="escorpiao">Escorpião</option>
-                    <option value="sagitario">Sagitário</option>
-                    <option value="capricornio">Capricórnio</option>
-                    <option value="aquario">Aquário</option>
-                    <option value="peixes">Peixes</option>
-                </select>
+        <div class="postagem-container-inputs">
+            
+                <div class="postagem-select">
+                    <label for="signo">Signo:</label>
+                    <select name="signo" id="signo">
+                        <option value="null" selected disabled>Escolha o signo</option>
+                        <option value="aries">Áries</option>
+                        <option value="touro">Touro</option>
+                        <option value="gemeos">Gêmeos</option>
+                        <option value="cancer">Câncer</option>
+                        <option value="leao">Leão</option>
+                        <option value="virgem">Virgem</option>
+                        <option value="libra">Libra</option>
+                        <option value="escorpiao">Escorpião</option>
+                        <option value="sagitario">Sagitário</option>
+                        <option value="capricornio">Capricórnio</option>
+                        <option value="aquario">Aquário</option>
+                        <option value="peixes">Peixes</option>
+                    </select>
+                </div>
+                <div class="postagem-data">
+                <label for="data">Data:</label>
+                <input type="date" name="data" id="data" required>
             </div>
+        </div>
+            <label for="mensagem">Mensagem:</label>
             <textarea name="mensagem" id="mensagem" cols="30" rows="10"></textarea>
             <button type="submit">Enviar dados</button>
         </form>

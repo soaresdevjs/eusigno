@@ -11,8 +11,8 @@ const SignosPosts = new Schema({
         required: true
     },
     data: {
-        type: Date,
-        default: new Date()
+        type: String,
+        required: true
     }
 })
 

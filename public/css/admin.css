@@ -41,7 +41,7 @@ body{
     padding: 5px;
 }
 
-.login-body button, .adminpage-principal button{
+.login-body button, .adminpage-principal button, .postagem-container button{
     margin-top: 10px;
     width: 100px;
     height: 30px;
@@ -82,6 +82,7 @@ body{
 .postagem-container{
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .postagem-container form{
@@ -89,12 +90,32 @@ body{
     flex-direction: column;
 }
 
+.postagem-container input{
+    width: 100px;
+}
+
 .postagem-container form textarea{
     resize: none;
-    min-width: 600px;
+    min-width: 550px;
+    padding: 5px;
     border: solid 2px black;
 }
 
-.postagem-select{
-    margin: 10px;
+.postagem-container-inputs{
+    display: flex;
+    justify-content: space-around;
+
 }
+
+.postagem-select, .postagem-data{
+    margin: 5px 0;
+}
+
+
+.postagem-select select, .postagem-data input{
+    width: 11em;
+    height: 2rem;
+}
+
+
+

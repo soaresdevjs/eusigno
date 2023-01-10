@@ -1,5 +1,10 @@
 <main class="adminpage-container">
     <div class="adminpage-principal">
         <a href="/admin/postagens"><button>Criar postagem</button></a>
-    </div>
+    </div class="adminpage-postagens">
+    {{#each posts}}
+        <h4>{{signo}}</h4>
+        <p>{{mensagem}}</p>
+        <small>{{data}}</small>
+    {{/each}}
 </main>
