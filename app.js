@@ -1,31 +1,49 @@
 const express = require('express');
 const app = express();
-const signos = require('./routes/signos')
-const admin = require('./routes/admin')
-const hbs = require('express-handlebars')
+const hbs = require('express-handlebars');
+const mongoose = require('mongoose');
+const passport = require('passport');
+const session = require('express-session');
+const bodyParser = require('body-parser');
+require('dotenv').config()
 
 //Configs
+    //Body Parser
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+    //Handlebars
 app.engine('hbs', hbs.engine({
     extname: 'hbs',
     defaultLayout: 'main'
 })); app.set('view engine','hbs');
 
+    //Mongoose
+mongoose.Promise = global.Promise;
+mongoose.connect('mongodb://localhost:27017/local',
+    {   useNewUrlParser:true,
+        useUnifiedTopology: true
+    }).then(()=>{
+    console.log("Conectado ao banco de dados!");
+}).catch((err)=>{
+    console.log("Erro ao contectar ao banco de dados. Erro: " + err);
+});
+    //Passport
+require("./config/auth")(passport);
+    app.use(
+      session({
+        secret: process.env.SECRET,
+        resave: false,
+        saveUninitialized: true,
+      })
+    );
+    app.use(passport.initialize());
+    app.use(passport.session());
+
+    //Static content
 app.use(express.static('public'));
 
-//Rotas
-app.get('/', (req, res)=>{
-    res.render('index');
-})
-
-app.get('/', (req, res)=>{
-    res.render('index', {
-        mensagemhoje: "maconha liberada"
-    });
-})
-
-app.use('/signos', signos);
-app.use('/admin', admin);
-
+//Routes
+require("./routes")(app);
 
 const PORT = process.env.PORT || 8087
 app.listen(PORT, () =>{
