@@ -1,0 +1,65 @@
+<main class="main-container">
+    <h1 style="text-align:center">Postagens Mensais</h1>
+    <div class="postarea-filter">
+        <form action="/admin/posts/mensal/buscar" method="get">
+            <label for="mes">Mês da postagem:</label>
+            <input type="month" name="mes" id="mes">
+            <label for="signo">Signo:</label>
+                <select name="signo" id="signo">
+                    <option value="" selected disabled>Escolha o signo</option>
+                    <option value="aries">Áries</option>
+                    <option value="touro">Touro</option>
+                    <option value="gemeos">Gêmeos</option>
+                    <option value="cancer">Câncer</option>
+                    <option value="leao">Leão</option>
+                    <option value="virgem">Virgem</option>
+                    <option value="libra">Libra</option>
+                    <option value="escorpiao">Escorpião</option>
+                    <option value="sagitario">Sagitário</option>
+                    <option value="capricornio">Capricórnio</option>
+                    <option value="aquario">Aquário</option>
+                    <option value="peixes">Peixes</option>
+                </select>
+                <button type="submit">Buscar</button>
+        </form>
+    </div>
+    <div class="postarea-container">
+        <div class="postsarea-posts-container">
+            {{#each posts}}
+                <div class="postsarea-posts">
+                    <h3 id="signo">{{signo}}</h3>
+                    <h4>Mensagem:</h4>
+                    <div class="postsarea-mensagem">
+                        <p>{{mensagem}}</p>
+                    </div>
+                    <div class="postarea-buttons">
+                            <p class="postsarea-data">{{mes}}</p>
+                        <div>
+                            <a href="/admin/posts/mensal/edit/{{_id}}"><button class="postarea-editbutton">Editar Postagem</button></a>
+                            <a href="/admin/posts/mensal/delete/{{_id}}"><button class="postarea-deletebutton">Deletar Postagem</button></a>
+                        </div>
+                    </div>
+                </div>
+            {{else}}
+            <h1 style="text-align: center; margin: 10px; color:darkgray">Nenhum post encontrado!</h1>
+            {{/each}}
+        </div>
+    </div>
+    <div class="postsarea-principal">
+        <a href="/admin/posts/mensal/adicionar"><button>Criar postagem</button></a>
+    </div class="postsarea-postagens">
+</main>
+<script type="text/javascript">
+    const signos = document.querySelectorAll('#signo')
+    const datas = document.querySelectorAll('.postsarea-data')
+
+    for(i = 0; i < datas.length; i++){
+        dataFormatada = datas[i].innerHTML.split('-').reverse().join('/').split('W')
+        datas[i].innerHTML = dataFormatada
+    }
+    for(i = 0; i < signos.length; i++){
+        signo = signos[i].innerHTML
+        primeiraLetra = signo[0]
+        signos[i].innerHTML = primeiraLetra.toUpperCase() + signo.slice(1); 
+    }
+</script>

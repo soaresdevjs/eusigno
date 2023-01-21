@@ -1,8 +1,13 @@
 const express = require('express');
 const router = express.Router();
+const mongoose = require('mongoose');
+require('../models/PostsDiario');
+require('../models/PostsSemanal');
+require('../models/PostsMensal');
 
-router.get('/:signo', (req, res) =>{
-    res.sendFile(__dirname + `/signos/signo-de-${req.params.signo}.html`)
-})
+router.use(express.static('public'));
+
+//Rotas de postagens
+require("./posts/posts")(router);
 
 module.exports = router;

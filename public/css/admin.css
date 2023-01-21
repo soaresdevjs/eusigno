@@ -1,0 +1,454 @@
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color:#7777775f;
+}
+
+html, body {
+    height: 100vh;
+}
+
+body{
+    display: grid;
+    grid-template-columns: 12em 1fr;
+    background-color: #E6E6E6;
+    font-family: "Maven Pro", monospace;
+}
+
+
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.postagem-principal{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #fff;
+    max-width: 90%;
+    min-width: 70%;
+    border-radius: 10px;
+    box-shadow: 0px 0px 25px 0px #858585;
+    -moz-box-shadow: 0px 0px 25px 0px #858585;
+    -webkit-box-shadow: 0px 0px 25px 0px #858585;
+    padding: 1rem;
+}
+
+main h1{
+    text-decoration: none;
+    color: black;
+    background-image: linear-gradient(to left, #45A2E1, #7C50F5);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 900;
+    margin: 5px;
+    text-align: center;
+}
+
+.navbar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0px 0px 5px #000;
+    -moz-box-shadow: 0px 0px 5px #000;
+    -webkit-box-shadow: 0px 0px 5px #000;
+    z-index: 2;
+    background-color: rgb(255, 255, 255);
+    justify-content: space-between;
+}
+.navbar-container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.navbar div a img{
+    margin: 10px;
+    width: 150px;
+
+}
+
+.navbar-admintools{
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar-more{
+    display: flex;
+    justify-self: end;
+    align-self: flex-end;
+}
+
+
+.navbar-admintools ul, .navbar-more ul{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.navbar-admintools li, .navbar-more li{
+    padding: 5px 0;
+    width: 12rem;
+    text-align: center;
+}
+
+.navbar-admintools li:nth-child(odd), .navbar-more li{
+    background-color: #CCC;
+}
+
+.navbar-admintools a, .navbar-more a{
+    text-decoration: none;
+    font-size: 15pt;
+    color: #000;
+}
+
+.postsarea-principal{
+    display: flex;
+    justify-content: center;
+    
+}
+
+.postsarea-principal button{
+    width: 150px;
+}
+
+.postsarea-principal a{
+    text-decoration: none;
+    width: 150px;
+    height: 30px;
+    color: #fff; 
+}
+
+.postsarea-principal button, .postagem-container button, .postarea-buttons button{
+    margin-top: 10px;
+    width: 150px;
+    height: 30px;
+    align-self: center;
+    color: #fff;
+    background-image: linear-gradient(90deg, #45A2E1, #7C50F5);
+    border: 0;
+    border-radius: 10px;
+}
+
+.postsarea-principal button:hover, .postagem-container button:hover,  .postarea-buttons button:hover{
+    background-image: linear-gradient(90deg, #338cc8, #643ad8);;
+    cursor: pointer;
+}
+
+.postarea-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 10px;
+    
+}
+
+.postsarea-posts-container {
+    background-color: #F5F5F5;
+    max-height: 70vh;
+    max-width: 65vw;
+    min-width: 60vw;
+    overflow: auto;
+    border-radius: 10px;
+    box-shadow: 0px 0px 25px 0px #858585;
+    -moz-box-shadow: 0px 0px 25px 0px #858585;
+    -webkit-box-shadow: 0px 0px 25px 0px #858585;
+}
+
+.postsarea-posts-container::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  .postsarea-posts-container::-webkit-scrollbar-track {
+    background: #F5F5F5;
+  }
+  
+  .postsarea-posts-container::-webkit-scrollbar-thumb {
+    background-color: #7777775f;
+  }
+
+.postsarea-posts-container #data{
+    text-align: center
+}
+
+.postsarea-posts{
+    border: solid 1px rgb(108, 108, 108);
+    margin: 5px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.postsarea-posts h3{
+    margin: 2px;
+    font-size: 18pt;
+}
+
+.postsarea-posts h4{
+    margin: 2px;
+}
+
+.postsarea-mensagem{
+    margin: 5px 10px;
+    max-width: 90vw;
+    overflow-wrap: break-word;
+}
+
+
+.postsarea-combinacoes, .postsarea-estrelas{
+    margin: 0px 10px;
+    display: flex;
+}
+
+.postsarea-combinacoes p, .postsarea-estrelas p{
+    margin-bottom: 5px;
+    margin-right: 10px;
+    font-weight: 600;
+}
+
+.postsarea-combinacoes p span, .postsarea-estrelas p span{
+    font-weight: normal;
+}
+
+.postsarea-data{
+    font-size: 10pt;
+    width: 100px;
+    margin: 5px;
+}
+
+.postarea-buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.postarea-editbutton, .postarea-deletebutton{
+    margin: 0.5rem;
+}
+
+.postagem-select{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.postagem-select > div{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.postagem-container form{
+    display: flex;
+    flex-direction: column;
+    min-width: 100%;
+}
+
+.postagem-mensagem textarea{
+    align-self: center;
+    margin: 5px;
+    resize: none;
+    min-width: 90%;
+    padding: 5px;
+    border: solid 2px black;
+    border-radius: 10px;
+}
+
+.postagem-container-inputs{
+    display: flex;
+    justify-content: space-around;
+}
+
+.postagem-container h3{
+    text-align: center;
+}
+
+.postagem-combinacoes{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.postagem-mensagem{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.postagem-buttons{
+    display: flex;
+    justify-content: center;
+}
+
+.postagem-buttons button{
+    margin-top: 10px;
+    width: 150px;
+    height: 30px;
+    align-self: center;
+    color: #fff;
+    background-image: linear-gradient(90deg, #45A2E1, #7C50F5);
+    border: 0;
+    border-radius: 10px;
+    margin: 1rem;
+    background-image: linear-gradient(45deg, #20da2c, #40f94c);
+}
+
+.postagem-buttons button:last-child{
+    background-image: linear-gradient(45deg, #da2020, #f94040);
+}
+
+.postagem-buttons button:hover{
+    cursor: pointer;
+}
+
+
+.postarea-buttons div{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: end;
+}
+
+.postagem-select, .postagem-data{
+    margin: 10px;
+}
+
+.postagem-data, .postagem-signo{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.postagem-select select, .postagem-data input{
+    width: 11em;
+    height: 2rem;
+    margin-bottom: 10px;
+}
+
+.postarea-filter{
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.checkbox-sexo input, .checkbox-trabalho input, .checkbox-vibe input, .checkbox-sucesso input{
+    opacity: 0;
+    z-index: 1;
+    width: 15px;
+}
+
+.erros {
+    text-align: center; 
+    color: red; 
+    margin-top: 10px;
+}
+
+.postagem-estrelas{
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.postagem-estrelas div{
+    margin: 0 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.estrelas-sexo, .estrelas-trabalho, .estrelas-vibe, .estrelas-sucesso{
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+}
+
+.estrelas-sexo input, .estrelas-trabalho input, .estrelas-vibe input, .estrelas-sucesso input{
+    cursor: pointer;
+}
+
+.c1::before, .c2::before, .c3::before, .c4::before, .c5::before{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.c2::before{
+    left: 19px;
+}
+
+.c3::before{
+    left: 38px;
+}
+
+.c4::before{
+    left: 57px;
+}
+
+.c5::before{
+    left: 76px;
+}
+
+
+.checked{
+    color: rgb(255, 153, 0);
+}
+
+@media screen and (max-width: 692px) {
+    .postarea-buttons button{
+        width: 118px;
+    }
+    
+}
+
+@media screen and (max-width: 720px){
+    body{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .navbar-admintools ul{
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .navbar-admintools ul li{
+        width: 100%;
+    }
+
+    .navbar-container{
+        display: inline;
+        text-align: center;
+    }
+
+    .navbar-more{
+      align-self: auto;  
+    }
+
+    .navbar-more li{
+        background-color: #fff;
+    }
+}
+
+@media screen and (max-width: 530px){
+
+    .postsarea-posts-container {
+        max-width: 80vw;
+    }
+
+    .postagem-combinacoes > div{
+        display: flex;
+        flex-direction: column;
+    }
+
+}

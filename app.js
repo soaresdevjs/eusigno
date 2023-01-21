@@ -1,22 +1,50 @@
 const express = require('express');
 const app = express();
-const signos = require('./routes/signos')
+const hbs = require('express-handlebars');
+const mongoose = require('mongoose');
+const passport = require('passport');
+const session = require('express-session');
+const bodyParser = require('body-parser');
+require('dotenv').config()
 
-app.use(express.static('public'));
+//Configurações
+    //Body Parser
+        app.use(bodyParser.urlencoded({ extended: true }));
+        app.use(bodyParser.json());
+    //Handlebars
+        app.engine('hbs', hbs.engine({
+            extname: 'hbs',
+            defaultLayout: 'main',
+        })); app.set('view engine','hbs');
+    //Mongoose
+        mongoose.Promise = global.Promise;
+        mongoose.set('strictQuery', false);
+        mongoose.connect(process.env.MONGODB_URL,
+            {   useNewUrlParser:true,
+                useUnifiedTopology: true
+            }).then(()=>{
+            console.log("Conectado ao banco de dados!");
+        }).catch((err)=>{
+            console.log("Erro ao contectar ao banco de dados. Erro: " + err);
+        });
+    //Passport
+        require("./config/auth")(passport);
+            app.use(
+            session({
+                secret: process.env.SECRET,
+                resave: false,
+                saveUninitialized: true,
+            })
+            );
+        app.use(passport.initialize());
+        app.use(passport.session());
 
-app.get('/', (req, res)=>{
-    res.sendFile(__dirname + '/public/index.html');
-})
+    //Conteúdo estatico(CSS, JS, Imagens)
+        app.use(express.static('public'));
 
-app.get('/style', (req, res)=>{
-    res.sendFile(__dirname + '/public/assets/css/style.css');
-})
+//Rotas
+    require("./routes")(app);
 
-app.get('/javascript', (req, res)=>{
-    res.sendFile(__dirname + '/public/assets/js/index.js');
-})
-
-app.use('/signos', signos);
 
 const PORT = process.env.PORT || 8087
 app.listen(PORT, () =>{

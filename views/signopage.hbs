@@ -1,0 +1,98 @@
+<main class="signo-principal">
+    <div class="marea-container">
+        <h1 id="signo"></h1>
+        <div class="marea-escolhadata">
+            <div>
+                <a href="/pt/signos/{{signo}}/ontem">Ontem</a>
+                <i></i>       
+                <a href="/pt/signos/{{signo}}">Hoje</a>
+                <i></i>
+                <a href="/pt/signos/{{signo}}/amanha">Amanhã</a>
+            </div>
+            <div>
+                <a href="/pt/signos/{{signo}}/semana">Semana</a>
+                <i></i>
+                <a href="/pt/signos/{{signo}}/mes">Mês</a>
+            </div>
+        </div>
+            {{#if posts.data}}
+            <p class="data" id="data">{{posts.data}}</p>
+            <p class="marea-text"> {{posts.mensagem}}</p>
+            {{/if}}
+            {{#if posts.semana}}
+            <p class="data" id="semana"></p>
+            <p class="marea-text">{{posts.mensagem}}</p>
+            {{/if}}
+            {{#if posts.mes}}
+            <p class="data" id="mes">{{posts.mes}}</p>
+            <p class="marea-text">{{posts.mensagem}}</p>
+            {{/if}}
+    </div>
+        {{#if posts.data}}
+        <div class="marea-container2">
+            <div class="marea-classificacoes">
+                <h3>Combinações</h3>
+                <div class="marea-classificacoes-signos">
+                    <div class="combinacao">
+                        <h4>Amor</h4>
+                        <a href="/pt/signos/{{posts.combinacoes.amor}}"><img src=""></a>
+                        <p></p>
+                    </div>
+                    <div class="combinacao">
+                        <h4>Amizade</h4>
+                        <a href="/pt/signos/{{posts.combinacoes.amizade}}"><img src=""></a>
+                        <p></p>
+                    </div>
+                    <div class="combinacao">
+                        <h4>Carreira</h4>
+                        <a href="/pt/signos/{{posts.combinacoes.carreira}}"><img src=""></a>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+            <div class="marea-estrelas">
+                <h3>Estrelas</h3>
+                <div>
+                    <div>
+                        <div class="estrelas-sexo">
+                            <h4>Sexo</h4>
+                            <span class="fa fa-star c1 s"></span>
+                            <span class="fa fa-star c2 s"></span>
+                            <span class="fa fa-star c3 s"></span>
+                            <span class="fa fa-star c4 s"></span>
+                            <span class="fa fa-star c5 s"></span>
+                        </div>
+                        <div class="estrelas-trabalho">
+                            <h4>Trabalho</h4>
+                            <span class="fa fa-star c1 t"></span>
+                            <span class="fa fa-star c2 t"></span>
+                            <span class="fa fa-star c3 t"></span>
+                            <span class="fa fa-star c4 t"></span>
+                            <span class="fa fa-star c5 t"></span>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="estrelas-vibe">
+                            <h4>Vibe</h4>
+                            <span class="fa fa-star c1 v"></span>
+                            <span class="fa fa-star c2 v"></span>
+                            <span class="fa fa-star c3 v"></span>
+                            <span class="fa fa-star c4 v"></span>
+                            <span class="fa fa-star c5 v"></span>
+                        </div>
+                        <div class="estrelas-sucesso">
+                            <h4>Sucesso</h4>
+                            <span class="fa fa-star c1 sc"></span>
+                            <span class="fa fa-star c2 sc"></span>
+                            <span class="fa fa-star c3 sc"></span>
+                            <span class="fa fa-star c4 sc"></span>
+                            <span class="fa fa-star c5 sc"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/if}}
+</main>
+{{>signoscript}}
+

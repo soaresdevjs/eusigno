@@ -1,0 +1,206 @@
+<script src="/js/jquery-3.6.3.min.js"></script>
+<script type="text/javascript">
+    const signo = "{{signo}}"
+    const data = document.querySelector('#data')
+    const semana = "{{posts.semana}}"
+    const semanaFormatada = document.querySelector('#semana')
+    const mes = document.querySelector('#mes')
+
+    if(data != undefined){
+        dataFormatada = data.innerHTML.split('-').reverse().join('/')
+        data.innerHTML = dataFormatada
+    }
+
+    if(semana != undefined){
+        const ano = semana
+        const anoF = ano.split('-')
+
+        function dates(current) {
+        var week= new Array(); 
+
+        current.setDate((current.getDate() - current.getDay()));
+
+        function dataAtualFormatada(){
+            const data = new Date(current),
+            dia  = data.getDate().toString().padStart(2, '0'),
+            mes  = (data.getMonth()+1).toString().padStart(2, '0'), //+1 pois no getMonth Janeiro começa com zero.
+            ano  = data.getFullYear();
+            return ano+"-"+mes+"-"+dia;
+        }
+
+        for (var i = 0; i < 7; i++) {
+            week.push(
+            dataAtualFormatada()
+            ); 
+            current.setDate(current.getDate() +1);
+        }
+        return week; 
+        }
+        const semanaF = dates(new Date);
+
+        for(i = 0; i < semanaF.length; i++){
+            const semanaForm = semanaF[i].split('-').reverse().join('/')
+            semanaF[i] = semanaForm
+        }
+
+        if(semanaFormatada != null){
+            semanaFormatada.innerHTML = `${semanaF[0]} - ${semanaF[6]}`
+        }
+
+    }
+
+    if(mes != undefined) {
+        const mesFormatado = mes.innerHTML.split('-').reverse()
+        switch(mesFormatado[0]){
+            case '01':
+            mes.innerHTML = "Jan/" + mesFormatado[1]
+            break
+            case '02':
+            mes.innerHTML = "Fev/" + mesFormatado[1]
+            break
+            case '03':
+            mes.innerHTML = "Mar/" + mesFormatado[1]
+            break
+            case '04':
+            mes.innerHTML = "Abr/" + mesFormatado[1]
+            break
+            case '05':
+            mes.innerHTML = "Mai/" + mesFormatado[1]
+            break
+            case '06':
+            mes.innerHTML = "Jun/" + mesFormatado[1]
+            break
+            case '07':
+            mes.innerHTML = "Jul/" + mesFormatado[1]
+            break
+            case '08':
+            mes.innerHTML = "Ago/" + mesFormatado[1]
+            break
+            case '09':
+            mes.innerHTML = "Set/" + mesFormatado[1]
+            break
+            case '10':
+            mes.innerHTML = "Out/" + mesFormatado[1]
+            break
+            case '11':
+            mes.innerHTML = "Nov/" + mesFormatado[1]
+            break
+            case '12':
+            mes.innerHTML = "Dez/" + mesFormatado[1]
+            break
+        }
+    }
+
+    switch (signo){
+        case 'aries':
+        document.querySelector('#signo').innerHTML = "Áries"
+        break;
+        case 'touro':
+        document.querySelector('#signo').innerHTML = "Touro"
+        break;
+        case 'gemeos':
+        document.querySelector('#signo').innerHTML = "Gêmeos"
+        break;
+        case 'cancer':
+        document.querySelector('#signo').innerHTML = "Câncer"
+        break;
+        case 'leao':
+        document.querySelector('#signo').innerHTML = "Leão"
+        break;
+        case 'virgem':
+        document.querySelector('#signo').innerHTML = "Virgem"
+        break;
+        case 'libra':
+        document.querySelector('#signo').innerHTML = "Libra"
+        break;
+        case 'escorpiao':
+        document.querySelector('#signo').innerHTML = "Escorpião"
+        break;
+        case 'sagitario':
+        document.querySelector('#signo').innerHTML = "Sagitário"
+        break;
+        case 'capricornio':
+        document.querySelector('#signo').innerHTML = "Capricórnio"
+        break;
+        case 'aquario':
+        document.querySelector('#signo').innerHTML = "Aquário"
+        break;
+        case 'peixes':
+        document.querySelector('#signo').innerHTML = "Peixes"
+        break;
+        case '404':
+        break;
+        default: window.location.href = "/pt/404"
+        break;
+    }
+
+    const combinacoes = ["{{posts.combinacoes.amor}}","{{posts.combinacoes.amizade}}","{{posts.combinacoes.carreira}}"]
+    const cImages = document.querySelectorAll('.combinacao img')
+    const cList = document.querySelectorAll('.combinacao p')
+    
+    for(i = 0; i < cList.length; i++){
+    switch (combinacoes[i]){
+        case 'aries':
+        cImages[i] = cImages[i].setAttribute('src', `/images/signos/${combinacoes[i]}.png`)
+        cList[i].innerHTML = "Áries"
+        break;
+        case 'touro':
+        cImages[i] = cImages[i].setAttribute('src', `/images/signos/${combinacoes[i]}.png`)
+        cList[i].innerHTML = "Touro"
+        break;
+        case 'gemeos':
+        cImages[i] = cImages[i].setAttribute('src', `/images/signos/${combinacoes[i]}.png`)
+        cList[i].innerHTML = "Gêmeos"
+        break;
+        case 'cancer':
+        cImages[i] = cImages[i].setAttribute('src', `/images/signos/${combinacoes[i]}.png`)
+        cList[i].innerHTML = "Câncer"
+        break;
+        case 'leao':
+        cImages[i] = cImages[i].setAttribute('src', `/images/signos/${combinacoes[i]}.png`)
+        cList[i].innerHTML = "Leão"
+        break;
+        case 'virgem':
+        cImages[i] = cImages[i].setAttribute('src', `/images/signos/${combinacoes[i]}.png`)
+        cList[i].innerHTML = "Virgem"
+        break;
+        case 'libra':
+        cImages[i] = cImages[i].setAttribute('src', `/images/signos/${combinacoes[i]}.png`)
+        cList[i].innerHTML = "Libra"
+        break;
+        case 'escorpiao':
+        cImages[i] = cImages[i].setAttribute('src', `/images/signos/${combinacoes[i]}.png`)
+        cList[i].innerHTML = "Escorpião"
+        break;
+        case 'sagitario':
+        cImages[i] = cImages[i].setAttribute('src', `/images/signos/${combinacoes[i]}.png`)
+        cList[i].innerHTML = "Sagitário"
+        break;
+        case 'capricornio':
+        cImages[i] = cImages[i].setAttribute('src', `/images/signos/${combinacoes[i]}.png`)
+        cList[i].innerHTML = "Capricórnio"
+        break;
+        case 'aquario':
+        cImages[i] = cImages[i].setAttribute('src', `/images/signos/${combinacoes[i]}.png`)
+        cList[i].innerHTML = "Aquário"
+        break;
+        case 'peixes':
+        cImages[i] = cImages[i].setAttribute('src', `/images/signos/${combinacoes[i]}.png`)
+        cList[i].innerHTML = "Peixes"
+        break;
+    }
+    }
+    
+    const rList = [document.querySelectorAll('.estrelas-sexo span'), document.querySelectorAll('.estrelas-trabalho span'), document.querySelectorAll('.estrelas-vibe span'), document.querySelectorAll('.estrelas-sucesso span')]
+
+    const rate = ["{{posts.estrelas.sexo}}", "{{posts.estrelas.trabalho}}", "{{posts.estrelas.vibe}}", "{{posts.estrelas.sucesso}}"]
+
+    for(r = 0; r < rate.length; r++){
+        for(i = 0; i < rate[r]; i++){
+            const rDocument = rList[r];
+            rDocument[i].style.color = "#ff9900"
+        }
+    }
+
+
+</script>

@@ -1,0 +1,40 @@
+<main>
+    <div class="postagem-principal">
+        <h1>Editar Postagem Mensal</h1>
+        <div class="postagem-container">
+            <form class="postagem-form" action="/admin/posts/mensal/edit" method="post">
+            <input type="hidden" name="id" value="{{post._id}}">
+            <div class="postagem-container-inputs">
+                    <div class="postagem-select">
+                        <label for="signo">Signo:</label>
+                        <select name="signo" id="signo">
+                            <option value="{{post.signo}}" selected id="signoL">{{post.signo}}</option>
+                        </select>
+                    </div>
+                    <div class="postagem-data">
+                    <label for="mes">Mês:</label>
+                    <input type="month" name="mes" id="mes" value="{{post.mes}}" required>
+                </div>
+            </div>
+            <div class="postagem-mensagem">
+                <label for="mensagem">Mensagem:</label>
+                <textarea name="mensagem" id="mensagem" cols="30" rows="10">{{post.mensagem}}</textarea>
+            </div>
+                {{#each erros}}
+                <div class="erros">{{text}}</div>
+                {{else}}
+                {{/each}}
+                <button type="submit">Alterar dados</button>
+            </form>
+        </div>
+    </div>
+</main>
+<script type="text/javascript">
+    const signos = document.querySelectorAll('#signoL')
+
+    for(i = 0; i < signos.length; i++){
+        signo = signos[i].innerHTML
+        primeiraLetra = signo[0]
+        signos[i].innerHTML = primeiraLetra.toUpperCase() + signo.slice(1); 
+    }
+</script>

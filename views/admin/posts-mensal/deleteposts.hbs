@@ -1,0 +1,44 @@
+<main>
+    <div class="postagem-principal">
+        <h1>Postagem Deletar Mensal</h1>
+        <div class="postagem-container">
+            <form class="postagem-form" action="/admin/posts/mensal/delete" method="post">
+            <input type="hidden" name="id" value="{{post._id}}">
+            <div class="postagem-container-inputs">
+                    <div class="postagem-select">
+                        <label for="signo">Signo:</label>
+                        <select name="signo" style="pointer-events:none;" id="signo">
+                            <option value="{{post.signo}}" selected id="signoL">{{post.signo}}</option>
+                        </select>
+                    </div>
+                    <div class="postagem-data">
+                    <label for="mes">Mês:</label>
+                    <input type="month" name="mes" style="pointer-events:none;" id="mes" value="{{post.mes}}">
+                </div>
+            </div>
+            <div class="postagem-mensagem">
+                <label for="mensagem">Mensagem:</label>
+                <textarea name="mensagem" id="mensagem" cols="30" rows="10">{{post.mensagem}}</textarea>
+            </div>
+                {{#each erros}}
+                <div class="erros">{{text}}</div>
+                {{else}}
+                {{/each}}
+                <h3>Deseja deletar o post?</h3>
+                <div class="postagem-buttons">
+                    <button type="submit">Sim</button>
+                    <a href="/admin/posts/mensal"><button type="button">Não</button></a>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+<script type="text/javascript">
+    const signos = document.querySelectorAll('#signoL')
+
+    for(i = 0; i < signos.length; i++){
+        signo = signos[i].innerHTML
+        primeiraLetra = signo[0]
+        signos[i].innerHTML = primeiraLetra.toUpperCase() + signo.slice(1); 
+    }
+</script>
