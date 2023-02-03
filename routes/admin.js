@@ -3,6 +3,7 @@ const router = express.Router();
 require('../models/PostsDiario');
 require('../models/PostsSemanal');
 require('../models/PostsMensal');
+require('../models/BlogPosts');
 router.use(express.static('../public'));
 
 router.get('/', (req, res) => {
@@ -21,5 +22,6 @@ router.get('/posts', (req, res) => {
 require("./posts/diario-posts")(router);
 require("./posts/semanal-posts")(router);
 require("./posts/mensal-posts")(router);
+require("./posts/blog-posts")(router);
 
 module.exports = router;

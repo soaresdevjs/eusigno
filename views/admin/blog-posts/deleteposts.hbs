@@ -1,0 +1,33 @@
+<main class="main-container">
+    <div class="postagem-principal">
+        <h1>Criar Postagem para o Blog</h1>
+        <div class="postagem-container">
+            <form action="/admin/posts/blog/delete" method="post">
+            <input type="hidden" name="id" value="{{post._id}}">
+                <div class="postagem-inputs">
+                    <div class="postagem-titulo">
+                        <label for="titulo">Titulo:</label>
+                        <input type="text" name="titulo" value="{{post.titulo}}"  required>
+                    </div>
+                    <div class="postagem-imagem">
+                        <label for="imagem">Imagem da capa(URL): </label>
+                        <input type="url" name="imagem" id="imagem" value="{{post.imagem}}" style="pointer-events:none;" required>
+                    </div>
+                </div>
+                <div class="postagem-mensagem">
+                    <label for="corpo">Corpo da postagem:</label>
+                    <textarea name="corpo" id="corpo" cols="30" rows="10" required style="pointer-events:none;">{{post.corpo}}</textarea>
+                </div>
+                {{#each erros}}
+                <div class="erros">{{text}}</div>
+                {{else}}
+                {{/each}}
+                <h3 style="text-align: center;">Deseja deletar o post?</h3>
+                <div class="postagem-buttons" >
+                    <button type="submit">Sim</button>
+                    <a href="/admin/posts/blog"><button type="button">Não</button></a>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>

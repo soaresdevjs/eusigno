@@ -24,7 +24,7 @@ module.exports = (router) => {
         const erros = []
     
         if(req.body.signo == undefined || req.body.mensagem == "" || req.body.amor == undefined || req.body.amizade == undefined || req.body.carreira == undefined || req.body.sexo == undefined || req.body.trabalho == undefined || req.body.vibe == undefined || req.body.sucesso == undefined){
-            erros.push({text: "Signo invalido ou mensagem vazia!"})
+            erros.push({text: "Ops... Algum dado está inválido!"})
         }
     
         if(erros.length > 0){
@@ -143,5 +143,5 @@ module.exports = (router) => {
                 console.log("Erro: " + err)
                 res.redirect('/admin/posts/diario')
             })
-            }})
+        }})
 }

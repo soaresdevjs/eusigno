@@ -1,0 +1,32 @@
+<input id="textarea" type="hidden" value="{{posts.corpo}}">
+<main class="blog-principal">
+    <div>
+        <div class="blog-container">
+            <div class="blog-post">
+                <h1>{{posts.titulo}}</h1>
+                <small>{{posts.data}}</small>
+                <div class="blog-img"><img src="{{posts.imagem}}"></div>
+                <div class="blog-corpo"></div>
+            </div>
+        </div>
+    </div>
+</main>
+{{#if blog}}
+{{>blog}}
+{{/if}}
+<script type="text/javascript">
+const wrapper = document.querySelector('.blog-corpo'),
+textarea = document.querySelector('#textarea');
+    const formatarTexto = () => {
+        const parts = textarea.value.split("\n");
+        console.log(textarea)
+        wrapper.innerHTML = '';
+        parts.forEach(function (part) {
+        const p = document.createElement('p');
+        p.innerHTML = part+"<br>";
+        wrapper.append(p)
+    })
+}
+formatarTexto()
+
+</script>

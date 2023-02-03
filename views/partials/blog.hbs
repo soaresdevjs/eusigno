@@ -1,0 +1,19 @@
+<div class="blog">
+    <div class="blog-content">
+        <h1>Postagens atuais:</h1>
+        <div class="blog-posts">
+            {{#each blog}}
+                <a href="/pt/blog/{{url}}" class="post">
+                    <div class="post-img"><img src="{{imagem}}" alt=""></div>
+                    <h3>{{titulo}}</h3>
+                    <small>{{corpo}}</small>
+                </a>
+            {{else}}
+                <h2>Nenhuma postagem no momento.</h2>
+            {{/each}}
+        </div>
+    </div>
+</div>
+
+
+

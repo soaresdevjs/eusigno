@@ -26,14 +26,27 @@
     <div class="postarea-container">
         <div class="postsarea-posts-container">
             {{#each posts}}
-                <div class="postsarea-posts">
+                 <div class="postsarea-posts">
                     <h3 id="signo">{{signo}}</h3>
                     <h4>Mensagem:</h4>
                     <div class="postsarea-mensagem">
                         <p>{{mensagem}}</p>
                     </div>
+                    <h4>Combinações:</h4>                    
+                    <div class="postsarea-combinacoes">
+                        <p>Amor: <span id="signo">{{combinacoes.amor}}</span></p>
+                        <p>Amizade: <span id="signo">{{combinacoes.amizade}}</span></p>
+                        <p>Carreira: <span id="signo">{{combinacoes.carreira}}</span></p>
+                    </div>
+                    <h4>Estrelas:</h4>
+                        <div class="postsarea-estrelas">
+                            <p>Sexo: <span>{{estrelas.sexo}}</span></p>
+                            <p>Trabalho: <span>{{estrelas.trabalho}}</span></p>
+                            <p>Vibe: <span>{{estrelas.vibe}}</span></p>
+                            <p>Sucesso: <span>{{estrelas.sucesso}}</span></p>
+                        </div>
                     <div class="postarea-buttons">
-                            <p class="postsarea-data">{{mes}}</p>
+                            <p class="postsarea-data">{{data}}</p>
                         <div>
                             <a href="/admin/posts/mensal/edit/{{_id}}"><button class="postarea-editbutton">Editar Postagem</button></a>
                             <a href="/admin/posts/mensal/delete/{{_id}}"><button class="postarea-deletebutton">Deletar Postagem</button></a>
@@ -41,7 +54,7 @@
                     </div>
                 </div>
             {{else}}
-            <h1 style="text-align: center; margin: 10px; color:darkgray">Nenhum post encontrado!</h1>
+            <h2 style="text-align: center; margin: 10px; color:darkgray">Nenhum post encontrado!</h2>
             {{/each}}
         </div>
     </div>

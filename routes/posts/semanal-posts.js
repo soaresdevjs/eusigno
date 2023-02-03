@@ -4,7 +4,8 @@ const PostsSemanal = mongoose.model("postssemanal");
 
 module.exports = (router) => {
     router.get('/posts/semanal', (req, res)=>{
-        PostsSemanal.find().lean().populate('signo').sort({semana:'desc'}).then((posts) => {
+        PostsSemanal
+    .find().lean().populate('signo').sort({semana:'desc'}).then((posts) => {
             res.render('admin/posts/postssemanal', {layout: 'admin.hbs', posts: posts})
         }).catch((err) => {
             console.log(err)
@@ -22,8 +23,8 @@ module.exports = (router) => {
     
         const erros = []
     
-        if(req.body.signo == undefined || req.body.mensagem == ""){
-            erros.push({text: "Signo invalido ou mensagem vazia!"})
+        if(req.body.signo == undefined || req.body.mensagem == "" || req.body.amor == undefined || req.body.amizade == undefined || req.body.carreira == undefined || req.body.sexo == undefined || req.body.trabalho == undefined || req.body.vibe == undefined || req.body.sucesso == undefined){
+            erros.push({text: "Ops... Algum dado está inválido!"})
         }
     
         if(erros.length > 0){
@@ -31,9 +32,20 @@ module.exports = (router) => {
                 layout: 'admin.hbs', 
                 erros: erros})
         }else{
+
             const newPost = {
                 signo: req.body.signo,
                 mensagem: req.body.mensagem,
+                combinacoes: {
+                    amor: req.body.amor,
+                    amizade: req.body.amizade, 
+                    carreira: req.body.carreira},
+                estrelas: {
+                    sexo: req.body.sexo,
+                    trabalho: req.body.trabalho,
+                    vibe: req.body.vibe,
+                    sucesso: req.body.sucesso,
+                },
                 semana: req.body.semana
             }
             new PostsSemanal(newPost).save().then(() => {
@@ -58,7 +70,7 @@ module.exports = (router) => {
     router.post('/posts/semanal/edit/', (req, res) =>{
         const erros = []
     
-        if(req.body.mensagem == "" || req.body.semana == undefined){
+        if(req.body.mensagem == "" || req.body.amor == undefined || req.body.amizade == undefined || req.body.carreira == undefined || req.body.sexo == undefined || req.body.trabalho == undefined || req.body.vibe == undefined || req.body.sucesso == undefined){
             erros.push({text: "Signo invalido ou mensagem vazia!"})
         }
     
@@ -74,6 +86,16 @@ module.exports = (router) => {
             {
                 "mensagem" : req.body.mensagem,
                 "semana" : req.body.semana,
+                "combinacoes": {
+                    'amor': req.body.amor,
+                    'amizade': req.body.amizade, 
+                    'carreira': req.body.carreira},
+                "estrelas": {
+                    'sexo': req.body.sexo,
+                    'trabalho': req.body.trabalho,
+                    'vibe': req.body.vibe,
+                    'sucesso': req.body.sucesso,
+                },
             }
         }, () => {
             res.redirect('/admin/posts/semanal')
@@ -81,7 +103,8 @@ module.exports = (router) => {
     }})
     
     router.get('/posts/semanal/delete/:id', (req, res) =>{
-        PostsSemanal.findOne({_id: req.params.id}).lean().then((post) =>{
+        PostsSemanal
+    .findOne({_id: req.params.id}).lean().then((post) =>{
             res.render("admin/posts-semanal/deleteposts", {layout: 'admin.hbs', post: post})
         }).catch((err) =>{
             console.log("Erro: " + err)
@@ -90,7 +113,8 @@ module.exports = (router) => {
     })
     
     router.post('/posts/semanal/delete', (req, res) =>{
-        PostsSemanal.remove({_id: req.body.id}).then(() =>{
+        PostsSemanal
+    .remove({_id: req.body.id}).then(() =>{
             console.log('Postagem deletada com sucesso')
             res.redirect('/admin/posts/semanal')
         }).catch((err) =>{
@@ -103,23 +127,26 @@ module.exports = (router) => {
         if(!req.query.semana && !req.query.signo){
             res.redirect('/admin/posts/semanal')
         }else if(req.query.semana == ""){
-            PostsSemanal.find({signo: req.query.signo}).lean().populate('signo').sort({semana:'desc'}).then((posts) => {
+            PostsSemanal
+        .find({signo: req.query.signo}).lean().populate('signo').sort({semana:'desc'}).then((posts) => {
                 res.render('admin/posts/postssemanal', {layout: 'admin.hbs', posts: posts})
             }).catch((err) =>{
                 console.log("Erro: " + err)
                 res.redirect('/admin/posts/semanal')})
         }else if(!req.query.signo){
-            PostsSemanal.find({semana: req.query.semana}).lean().populate('signo').sort({semana:'desc'}).then((posts) => {
+            PostsSemanal
+        .find({semana: req.query.semana}).lean().populate('signo').sort({semana:'desc'}).then((posts) => {
                 res.render('admin/posts/postssemanal', {layout: 'admin.hbs', posts: posts})
             }).catch((err) =>{
                 console.log("Erro: " + err)
                 res.redirect('/admin/posts/semanal')})
         }else{
-            PostsSemanal.find({semana: req.query.semana, signo: req.query.signo}).lean().populate('signo').sort({semana:'desc'}).then((posts) => {
+            PostsSemanal
+        .find({semana: req.query.semana, signo: req.query.signo}).lean().populate('signo').sort({semana:'desc'}).then((posts) => {
                 res.render('admin/posts/postssemanal', {layout: 'admin.hbs', posts: posts})
             }).catch((err) =>{
                 console.log("Erro: " + err)
                 res.redirect('/admin/posts/semanal')
             })
-            }})
+        }})
 }

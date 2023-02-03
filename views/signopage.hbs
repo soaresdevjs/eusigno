@@ -1,6 +1,6 @@
 <main class="signo-principal">
     <div class="marea-container">
-        <h1 id="signo"></h1>
+        <h1 id="signo">{{signo}}</h1>
         <div class="marea-escolhadata">
             <div>
                 <a href="/pt/signos/{{signo}}/ontem">Ontem</a>
@@ -15,20 +15,20 @@
                 <a href="/pt/signos/{{signo}}/mes">Mês</a>
             </div>
         </div>
+            <input id="textarea" type="hidden" value="{{posts.mensagem}}">
             {{#if posts.data}}
             <p class="data" id="data">{{posts.data}}</p>
-            <p class="marea-text"> {{posts.mensagem}}</p>
+            <div class="marea-text"></div>
             {{/if}}
             {{#if posts.semana}}
             <p class="data" id="semana"></p>
-            <p class="marea-text">{{posts.mensagem}}</p>
+            <div class="marea-text"></div>
             {{/if}}
             {{#if posts.mes}}
             <p class="data" id="mes">{{posts.mes}}</p>
-            <p class="marea-text">{{posts.mensagem}}</p>
+            <div class="marea-text"></div>
             {{/if}}
     </div>
-        {{#if posts.data}}
         <div class="marea-container2">
             <div class="marea-classificacoes">
                 <h3>Combinações</h3>
@@ -51,8 +51,9 @@
                 </div>
             </div>
             <div class="marea-estrelas">
-                <h3>Estrelas</h3>
+                <h3>Classificação de Estrelas de hoje</h3>
                 <div>
+                    <p>Seu humor geral:</p>
                     <div>
                         <div class="estrelas-sexo">
                             <h4>Sexo</h4>
@@ -92,7 +93,9 @@
                 </div>
             </div>
         </div>
-        {{/if}}
 </main>
+{{#if blog}}
+{{>blog}}
+{{/if}}
 {{>signoscript}}
 

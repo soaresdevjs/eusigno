@@ -44,7 +44,7 @@ main{
 main h1{
     text-decoration: none;
     color: black;
-    background-image: linear-gradient(to left, #45A2E1, #7C50F5);
+    background: linear-gradient(270deg, rgba(248,189,89,1) 0%, rgba(236,111,98,1) 50%, rgba(160,81,181,1) 100%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -135,14 +135,15 @@ main h1{
     width: 150px;
     height: 30px;
     align-self: center;
-    color: #fff;
-    background-image: linear-gradient(90deg, #45A2E1, #7C50F5);
-    border: 0;
+    color: #000;
+    border:solid 2px #000000;
     border-radius: 10px;
+    background-color: #fff;
+    transition: 0.2s;
 }
 
 .postsarea-principal button:hover, .postagem-container button:hover,  .postarea-buttons button:hover{
-    background-image: linear-gradient(90deg, #338cc8, #643ad8);;
+    background-color: #d3d3d3;
     cursor: pointer;
 }
 
@@ -154,7 +155,7 @@ main h1{
     
 }
 
-.postsarea-posts-container {
+.postsarea-posts-container, .postsarea-blogs-container{
     background-color: #F5F5F5;
     max-height: 70vh;
     max-width: 65vw;
@@ -164,6 +165,12 @@ main h1{
     box-shadow: 0px 0px 25px 0px #858585;
     -moz-box-shadow: 0px 0px 25px 0px #858585;
     -webkit-box-shadow: 0px 0px 25px 0px #858585;
+}
+
+.postsarea-blogs-container{
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
 }
 
 .postsarea-posts-container::-webkit-scrollbar {
@@ -298,18 +305,20 @@ main h1{
     height: 30px;
     align-self: center;
     color: #fff;
-    background-image: linear-gradient(90deg, #45A2E1, #7C50F5);
-    border: 0;
+    color: #000;
+    border:solid 3px #00f556;
     border-radius: 10px;
-    margin: 1rem;
-    background-image: linear-gradient(45deg, #20da2c, #40f94c);
+    background-color: #fff;
+    transition: 0.2s;
+    margin: 1rem;;
 }
 
 .postagem-buttons button:last-child{
-    background-image: linear-gradient(45deg, #da2020, #f94040);
+    border:solid 3px #f50000;
 }
 
-.postagem-buttons button:hover{
+.postagem-buttons button:hover, .postarea-filter button:hover{
+    background-color: #d3d3d3;
     cursor: pointer;
 }
 
@@ -342,10 +351,82 @@ main h1{
     justify-content: center;
 }
 
+.postarea-filter button{
+    width: 70px;
+    color: #000;
+    border:solid 2px #000000;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+.postsarea-blog{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #000;
+    width: 49%;
+    height: 98%;
+    margin: 4px;
+    border-radius: 10px;
+    padding: 10px;
+    overflow-y: scroll;
+    justify-content: space-between;
+}
+
+.postsarea-blog::-webkit-scrollbar {
+    width: 7px;
+  }
+
+.postsarea-blog::-webkit-scrollbar-track {
+    background: none
+}
+  
+.postsarea-blog::-webkit-scrollbar-thumb {
+    background-color: rgba(101, 101, 101, 0.298);   border-radius: 20px;
+}
+
+.postsarea-blog img{
+    object-fit: cover;
+    width: 400px;
+    height: 200px;
+    border-radius: 10px;
+}
+
+.postsarea-blog h3{
+    overflow: hidden;
+    margin: 0 35px;
+    height: 70px;
+}
+
+.post-img{
+    display: flex;
+    justify-content: center;
+}
+
+.postagem-inputs{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-evenly;
+    margin-bottom: 10px;
+}
+
+.postagem-inputs input{
+    width: 100%;
+    padding: 5px;
+}
+
+.postagem-titulo, .postagem-imagem{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
+
+
+
 .checkbox-sexo input, .checkbox-trabalho input, .checkbox-vibe input, .checkbox-sucesso input{
     opacity: 0;
     z-index: 1;
-    width: 15px;
+    width: 19px;
 }
 
 .erros {
@@ -412,6 +493,7 @@ main h1{
 }
 
 @media screen and (max-width: 720px){
+    
     body{
         display: flex;
         flex-direction: column;
@@ -437,6 +519,17 @@ main h1{
 
     .navbar-more li{
         background-color: #fff;
+    }
+    .postsarea-blogs-container{
+        flex-direction: column;
+    }
+
+    .postsarea-blog{
+        width: 98%;
+    }
+
+    .postsarea-blog h3{
+        margin: 0;
     }
 }
 

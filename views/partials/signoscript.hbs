@@ -1,10 +1,68 @@
 <script src="/js/jquery-3.6.3.min.js"></script>
 <script type="text/javascript">
-    const signo = "{{signo}}"
-    const data = document.querySelector('#data')
-    const semana = "{{posts.semana}}"
-    const semanaFormatada = document.querySelector('#semana')
-    const mes = document.querySelector('#mes')
+    const signo = document.querySelector('#signo').innerHTML,
+        data = document.querySelector('#data'),
+        semana = "{{posts.semana}}",
+        semanaFormatada = document.querySelector('#semana'),
+        mes = document.querySelector('#mes'),
+        textarea = document.querySelector('#textarea'),
+        wrapper = document.querySelector('.marea-text');
+
+    
+    switch (signo){
+        case 'aries':
+        document.querySelector('#signo').innerHTML = "Áries"
+        break;
+        case 'touro':
+        document.querySelector('#signo').innerHTML = "Touro"
+        break;
+        case 'gemeos':
+        document.querySelector('#signo').innerHTML = "Gêmeos"
+        break;
+        case 'cancer':
+        document.querySelector('#signo').innerHTML = "Câncer"
+        break;
+        case 'leao':
+        document.querySelector('#signo').innerHTML = "Leão"
+        break;
+        case 'virgem':
+        document.querySelector('#signo').innerHTML = "Virgem"
+        break;
+        case 'libra':
+        document.querySelector('#signo').innerHTML = "Libra"
+        break;
+        case 'escorpiao':
+        document.querySelector('#signo').innerHTML = "Escorpião"
+        break;
+        case 'sagitario':
+        document.querySelector('#signo').innerHTML = "Sagitário"
+        break;
+        case 'capricornio':
+        document.querySelector('#signo').innerHTML = "Capricórnio"
+        break;
+        case 'aquario':
+        document.querySelector('#signo').innerHTML = "Aquário"
+        break;
+        case 'peixes':
+        document.querySelector('#signo').innerHTML = "Peixes"
+        break;
+        case '404':
+        break;
+        default: window.location.href = "/pt/404"
+        break;
+    }
+
+    const formatarTexto = () => {
+        const parts = textarea.value.split("\r\n");
+        console.log(textarea)
+        wrapper.innerHTML = '';
+    parts.forEach(function (part) {
+        const p = document.createElement('p');
+        p.innerHTML = part+"<br>";
+        wrapper.append(p)
+    })
+}
+formatarTexto()
 
     if(data != undefined){
         dataFormatada = data.innerHTML.split('-').reverse().join('/')
@@ -34,7 +92,8 @@
             ); 
             current.setDate(current.getDate() +1);
         }
-        return week; 
+        return week;
+
         }
         const semanaF = dates(new Date);
 
@@ -90,50 +149,6 @@
             break
         }
     }
-
-    switch (signo){
-        case 'aries':
-        document.querySelector('#signo').innerHTML = "Áries"
-        break;
-        case 'touro':
-        document.querySelector('#signo').innerHTML = "Touro"
-        break;
-        case 'gemeos':
-        document.querySelector('#signo').innerHTML = "Gêmeos"
-        break;
-        case 'cancer':
-        document.querySelector('#signo').innerHTML = "Câncer"
-        break;
-        case 'leao':
-        document.querySelector('#signo').innerHTML = "Leão"
-        break;
-        case 'virgem':
-        document.querySelector('#signo').innerHTML = "Virgem"
-        break;
-        case 'libra':
-        document.querySelector('#signo').innerHTML = "Libra"
-        break;
-        case 'escorpiao':
-        document.querySelector('#signo').innerHTML = "Escorpião"
-        break;
-        case 'sagitario':
-        document.querySelector('#signo').innerHTML = "Sagitário"
-        break;
-        case 'capricornio':
-        document.querySelector('#signo').innerHTML = "Capricórnio"
-        break;
-        case 'aquario':
-        document.querySelector('#signo').innerHTML = "Aquário"
-        break;
-        case 'peixes':
-        document.querySelector('#signo').innerHTML = "Peixes"
-        break;
-        case '404':
-        break;
-        default: window.location.href = "/pt/404"
-        break;
-    }
-
     const combinacoes = ["{{posts.combinacoes.amor}}","{{posts.combinacoes.amizade}}","{{posts.combinacoes.carreira}}"]
     const cImages = document.querySelectorAll('.combinacao img')
     const cList = document.querySelectorAll('.combinacao p')
@@ -201,6 +216,5 @@
             rDocument[i].style.color = "#ff9900"
         }
     }
-
 
 </script>

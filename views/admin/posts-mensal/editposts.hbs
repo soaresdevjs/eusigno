@@ -1,25 +1,131 @@
 <main>
     <div class="postagem-principal">
-        <h1>Editar Postagem Mensal</h1>
+        <h1>Editar Postagem</h1>
         <div class="postagem-container">
             <form class="postagem-form" action="/admin/posts/mensal/edit" method="post">
             <input type="hidden" name="id" value="{{post._id}}">
             <div class="postagem-container-inputs">
                     <div class="postagem-select">
-                        <label for="signo">Signo:</label>
-                        <select name="signo" id="signo">
-                            <option value="{{post.signo}}" selected id="signoL">{{post.signo}}</option>
-                        </select>
+                        <div>
+                            <div class="postagem-signo">
+                                <label for="signo">Signo:</label>
+                                <select name="signo" id="signo">
+                                    <option value="{{post.signo}}" selected id="signoL">{{post.signo}}</option>
+                                </select>
+                            </div>
+                            <div class="postagem-data">
+                            <label for="mes">Mês:</label>
+                            <input type="month" name="mes" id="mes" value="{{post.mes}}" required>
+                        </div>
                     </div>
-                    <div class="postagem-data">
-                    <label for="mes">Mês:</label>
-                    <input type="month" name="mes" id="mes" value="{{post.mes}}" required>
-                </div>
-            </div>
-            <div class="postagem-mensagem">
-                <label for="mensagem">Mensagem:</label>
+                        <h4>Combinações:</h4>
+                        <div class="postagem-combinacoes">
+                            <div>
+                                <label for="amor">Amor:</label>
+                            <select name="amor" id="amor">
+                                <option value="{{post.combinacoes.amor}}" selected id="signoL">{{post.combinacoes.amor}}</option>
+                                <option value="aries">Áries</option>
+                                <option value="touro">Touro</option>
+                                <option value="gemeos">Gêmeos</option>
+                                <option value="cancer">Câncer</option>
+                                <option value="leao">Leão</option>
+                                <option value="virgem">Virgem</option>
+                                <option value="libra">Libra</option>
+                                <option value="escorpiao">Escorpião</option>
+                                <option value="sagitario">Sagitário</option>
+                                <option value="capricornio">Capricórnio</option>
+                                <option value="aquario">Aquário</option>
+                                <option value="peixes">Peixes</option>
+                            </select>
+                            <label for="amizade">Amizade:</label>
+                            <select name="amizade" id="amizade">
+                                <option value="{{post.combinacoes.amizade}}" selected id="signoL">{{post.combinacoes.amizade}}</option>
+                                <option value="aries">Áries</option>
+                                <option value="touro">Touro</option>
+                                <option value="gemeos">Gêmeos</option>
+                                <option value="cancer">Câncer</option>
+                                <option value="leao">Leão</option>
+                                <option value="virgem">Virgem</option>
+                                <option value="libra">Libra</option>
+                                <option value="escorpiao">Escorpião</option>
+                                <option value="sagitario">Sagitário</option>
+                                <option value="capricornio">Capricórnio</option>
+                                <option value="aquario">Aquário</option>
+                                <option value="peixes">Peixes</option>
+                            </select>
+                            <label for="carreira">Carreira:</label>
+                            <select name="carreira" id="carreira">
+                                <option value="{{post.combinacoes.carreira}}" selected id="signoL">{{post.combinacoes.carreira}}</option>
+                                <option value="aries">Áries</option>
+                                <option value="touro">Touro</option>
+                                <option value="gemeos">Gêmeos</option>
+                                <option value="cancer">Câncer</option>
+                                <option value="leao">Leão</option>
+                                <option value="virgem">Virgem</option>
+                                <option value="libra">Libra</option>
+                                <option value="escorpiao">Escorpião</option>
+                                <option value="sagitario">Sagitário</option>
+                                <option value="capricornio">Capricórnio</option>
+                                <option value="aquario">Aquário</option>
+                                <option value="peixes">Peixes</option>
+                            </select>
+                            </div>
+                            </div>
+                            <h4>Estrelas:</h4>
+                            <div class="postagem-estrelas">
+                                <div>
+                                    <div class="checkbox-sexo">
+                                    <p>Sexo:</p>
+                                        <div class="estrelas-sexo">
+                                        <input type="hidden" id="sexo-rate" value="{{post.estrelas.sexo}}">
+                                            <input type="radio" id="rate-1" name="sexo" class="estrela-sexo" value="1"><span class="fa fa-star c1 s"></span>
+                                            <input type="radio" id="rate-2" name="sexo" class="estrela-sexo" value="2"><span class="fa fa-star c2 s"></span>
+                                            <input type="radio" id="rate-3" name="sexo" class="estrela-sexo" value="3"><span class="fa fa-star c3 s"></span>
+                                            <input type="radio" id="rate-4" name="sexo" class="estrela-sexo" value="4"><span class="fa fa-star c4 s"></span>
+                                            <input type="radio" id="rate-5" name="sexo" class="estrela-sexo" value="5"><span class="fa fa-star c5 s"></span>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox-trabalho">
+                                    <p>Trabalho:</p>
+                                        <div class="estrelas-trabalho">
+                                        <input type="hidden" id="trabalho-rate" value="{{post.estrelas.trabalho}}">
+                                            <input type="radio" id="rate-1" name="trabalho" class="estrela-trabalho" value="1"><span class="fa fa-star c1 t"></span>
+                                            <input type="radio" id="rate-2" name="trabalho" class="estrela-trabalho" value="2"><span class="fa fa-star c2 t"></span>
+                                            <input type="radio" id="rate-3" name="trabalho" class="estrela-trabalho" value="3"><span class="fa fa-star c3 t"></span>
+                                            <input type="radio" id="rate-4" name="trabalho" class="estrela-trabalho" value="4"><span class="fa fa-star c4 t"></span>
+                                            <input type="radio" id="rate-5" name="trabalho" class="estrela-trabalho" value="5"><span class="fa fa-star c5 t"></span>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox-vibe">
+                                    <p>Vibe:</p>
+                                        <div class="estrelas-vibe">
+                                        <input type="hidden" id="vibe-rate" value="{{post.estrelas.vibe}}">
+                                            <input type="radio" id="rate-1" name="vibe" class="estrela-vibe" value="1"><span class="fa fa-star c1 v"></span>
+                                            <input type="radio" id="rate-2" name="vibe" class="estrela-vibe" value="2"><span class="fa fa-star c2 v"></span>
+                                            <input type="radio" id="rate-3" name="vibe" class="estrela-vibe" value="3"><span class="fa fa-star c3 v"></span>
+                                            <input type="radio" id="rate-4" name="vibe" class="estrela-vibe" value="4"><span class="fa fa-star c4 v"></span>
+                                            <input type="radio" id="rate-5" name="vibe" class="estrela-vibe" value="5"><span class="fa fa-star c5 v"></span>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox-sucesso">
+                                    <p>Sucesso:</p>
+                                        <div class="estrelas-sucesso">
+                                        <input type="hidden" id="sucesso-rate" value="{{post.estrelas.sucesso}}">
+                                            <input type="radio" id="rate-1" name="sucesso" class="estrela-sucesso" value="1"><span class="fa fa-star c1 sc"></span>
+                                            <input type="radio" id="rate-2" name="sucesso" class="estrela-sucesso" value="2"><span class="fa fa-star c2 sc"></span>
+                                            <input type="radio" id="rate-3" name="sucesso" class="estrela-sucesso" value="3"><span class="fa fa-star c3 sc"></span>
+                                            <input type="radio" id="rate-4" name="sucesso" class="estrela-sucesso" value="4"><span class="fa fa-star c4 sc"></span>
+                                            <input type="radio" id="rate-5" name="sucesso" class="estrela-sucesso" value="5"><span class="fa fa-star c5 sc"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <div class="postagem-mensagem">
+                    <label for="mensagem">Mensagem:</label>
                 <textarea name="mensagem" id="mensagem" cols="30" rows="10">{{post.mensagem}}</textarea>
-            </div>
+                </div>
                 {{#each erros}}
                 <div class="erros">{{text}}</div>
                 {{else}}
@@ -29,6 +135,7 @@
         </div>
     </div>
 </main>
+<script src="/js/jquery-3.6.3.min.js"></script>
 <script type="text/javascript">
     const signos = document.querySelectorAll('#signoL')
 
@@ -37,4 +144,172 @@
         primeiraLetra = signo[0]
         signos[i].innerHTML = primeiraLetra.toUpperCase() + signo.slice(1); 
     }
+
+    switch($('#sexo-rate').val()){
+        case '1':
+        $(".checkbox-sexo > div > #rate-1").prop('checked', true)
+        $('.c1.s').addClass('checked').prop('checked', true)
+        $('.c2.s, .c3.s, .c4.s, .c5.s').removeClass('checked')
+        break
+        case '2':
+        $(".checkbox-sexo > div > #rate-2").prop('checked', true)
+        $('.c1.s, .c2.s').addClass('checked').prop('checked', true)
+        $('.c3.s, .c4.s, .c5.s').removeClass('checked')
+        break
+        case '3':
+        $(".checkbox-sexo > div > #rate-3").prop('checked', true)
+        $('.c1.s, .c2.s, .c3.s').addClass('checked').prop('checked', true)
+        $('.c4.s, .c5.s').removeClass('checked')
+        break
+        case '4':
+        $(".checkbox-sexo > div > #rate-4").prop('checked', true)
+        $('.c1.s, .c2.s, .c3.s, .c4.s').addClass('checked').prop('checked', true)
+        $('.c5.s').removeClass('checked')
+        break
+        case '5':
+        $(".checkbox-sexo > div > #rate-5").prop('checked', true)
+        $('.c1.s, .c2.s, .c3.s, .c4.s, .c5.s').addClass('checked').prop('checked', true)
+        break
+    }
+
+    switch($('#trabalho-rate').val()){
+        case '1':
+        $(".checkbox-trabalho > div > #rate-1").prop('checked', true)
+        $('.c1.t').addClass('checked').prop('checked', true)
+        $('.c2.t, .c3.t, .c4.t, .c5.t').removeClass('checked')
+        break
+        case '2':
+        $(".checkbox-trabalho > div > #rate-2").prop('checked', true)
+        $('.c1.t, .c2.t').addClass('checked').prop('checked', true)
+        $('.c3.t, .c4.t, .c5.t').removeClass('checked')
+        break
+        case '3':
+        $(".checkbox-trabalho > div > #rate-3").prop('checked', true)
+        $('.c1.t, .c2.t, .c3.t').addClass('checked').prop('checked', true)
+        $('.c4.t, .c5.t').removeClass('checked')
+        break
+        case '4':
+        $(".checkbox-trabalho > div > #rate-4").prop('checked', true)
+        $('.c1.t, .c2.t, .c3.t, .c4.t').addClass('checked').prop('checked', true)
+        $('.c5.t').removeClass('checked')
+        break
+        case '5':
+        $(".checkbox-trabalho > div > #rate-5").prop('checked', true)
+        $('.c1.t, .c2.t, .c3.t, .c4.t, .c5.t').addClass('checked').prop('checked', true)
+        break
+    }
+
+    switch($('#vibe-rate').val()){
+        case '1':
+        $(".checkbox-vibe > div > #rate-1").prop('checked', true)
+        $('.c1.v').addClass('checked').prop('checked', true)
+        $('.c2.v, .c3.v, .c4.v, .c5.v').removeClass('checked')
+        break
+        case '2':
+        $(".checkbox-vibe > div > #rate-2").prop('checked', true)
+        $('.c1.v, .c2.v').addClass('checked').prop('checked', true)
+        $('.c3.v, .c4.v, .c5.v').removeClass('checked')
+        break
+        case '3':
+        $(".checkbox-vibe > div > #rate-3").prop('checked', true)
+        $('.c1.v, .c2.v, .c3.v').addClass('checked').prop('checked', true)
+        $('.c4.v, .c5.v').removeClass('checked')
+        break
+        case '4':
+        $(".checkbox-vibe > div > #rate-4").prop('checked', true)
+        $('.c1.v, .c2.v, .c3.v, .c4.v').addClass('checked').prop('checked', true)
+        $('.c5.v').removeClass('checked')
+        break
+        case '5':
+        $(".checkbox-vibe > div > #rate-5").prop('checked', true)
+        $('.c1.v, .c2.v, .c3.v, .c4.v, .c5.v').addClass('checked').prop('checked', true)
+        break
+    }
+
+    switch($('#sucesso-rate').val()){
+        case '1':
+        $(".checkbox-sucesso > div > #rate-1").prop('checked', true)
+        $('.c1.sc').addClass('checked')
+        $('.c2.sc, .c3.sc, .c4.sc, .c5.sc').removeClass('checked')
+        break
+        case '2':
+        $(".checkbox-sucesso > div > #rate-2").prop('checked', true)
+        $('.c1.sc, .c2.sc').addClass('checked')
+        $('.c3.sc, .c4.sc, .c5.sc').removeClass('checked')
+        break
+        case '3':
+        $(".checkbox-sucesso > div > #rate-3").prop('checked', true)
+        $('.c1.sc, .c2.sc, .c3.t').addClass('checked')
+        $('.c4.sc, .c5.sc').removeClass('checked')
+        break
+        case '4':
+        $(".checkbox-sucesso > div > #rate-4").prop('checked', true)
+        $('.c1.sc, .c2.sc, .c3.sc, .c4.sc').addClass('checked')
+        $('.c5.sc').removeClass('checked')
+        break
+        case '5':
+        $(".checkbox-sucesso > div > #rate-5").prop('checked', true)
+        $('.c1.sc, .c2.sc, .c3.sc, .c4.sc, .c5.sc').addClass('checked')
+        break
+    }
+
+    $(".checkbox-sexo > div > #rate-1").on("click", () =>{
+        $('.c1.s').addClass('checked')
+        $('.c2.s, .c3.s, .c4.s, .c5.s').removeClass('checked')})
+    $(".checkbox-sexo > div > #rate-2").on( "click", () =>{
+        $('.c1.s, .c2.s').addClass('checked')
+        $('.c3.s, .c4.s, .c5.s').removeClass('checked')})
+    $(".checkbox-sexo > div > #rate-3").on("click", () =>{
+        $('.c1.s, .c2.s, .c3.s').addClass('checked')
+        $('.c4.s, .c5.s').removeClass('checked')})
+    $(".checkbox-sexo > div > #rate-4").on("click", () =>{
+        $('.c1.s, .c2.s, .c3.s, .c4.s').addClass('checked')
+        $('.c5.s').removeClass('checked')})
+    $(".checkbox-sexo > div > #rate-5").on("click", () =>{
+        $('.c1.s, .c2.s, .c3.s, .c4.s, .c5.s').addClass('checked')});
+
+    $(".checkbox-trabalho > div > #rate-1").on("click", () =>{
+        $('.c1.t').addClass('checked')
+        $('.c2.t, .c3.t, .c4.t, .c5.t').removeClass('checked')})
+    $(".checkbox-trabalho > div > #rate-2").on( "click", () =>{
+        $('.c1.t, .c2.t').addClass('checked')
+        $('.c3.t, .c4.t, .c5.t').removeClass('checked')})
+    $(".checkbox-trabalho > div > #rate-3").on("click", () =>{
+        $('.c1.t, .c2.t, .c3.t').addClass('checked')
+        $('.c4.t, .c5.t').removeClass('checked')})
+    $(".checkbox-trabalho > div > #rate-4").on("click", () =>{
+        $('.c1.t, .c2.t, .c3.t, .c4.t').addClass('checked')
+        $('.c5.t').removeClass('checked')})
+    $(".checkbox-trabalho > div > #rate-5").on("click", () =>{
+        $('.c1.t, .c2.t, .c3.t, .c4.t, .c5.t').addClass('checked')});    
+
+    $(".checkbox-vibe > div > #rate-1").on("click", () =>{
+        $('.c1.v').addClass('checked')
+        $('.c2.v, .c3.v, .c4.v, .c5.v').removeClass('checked')})
+    $(".checkbox-vibe > div > #rate-2").on( "click", () =>{
+        $('.c1.v, .c2.v').addClass('checked')
+        $('.c3.v, .c4.v, .c5.v').removeClass('checked')})
+    $(".checkbox-vibe > div > #rate-3").on("click", () =>{
+        $('.c1.v, .c2.v, .c3.v').addClass('checked')
+        $('.c4.v, .c5.v').removeClass('checked')})
+    $(".checkbox-vibe > div > #rate-4").on("click", () =>{
+        $('.c1.v, .c2.v, .c3.v, .c4.v').addClass('checked')
+        $('.c5.v').removeClass('checked')})
+    $(".checkbox-vibe > div > #rate-5").on("click", () =>{
+        $('.c1.v, .c2.v, .c3.v, .c4.v, .c5.v').addClass('checked')});    
+
+    $(".checkbox-sucesso > div > #rate-1").on("click", () =>{
+        $('.c1.sc').addClass('checked')
+        $('.c2.sc, .c3.sc, .c4.sc, .c5.sc').removeClass('checked')})
+    $(".checkbox-sucesso > div > #rate-2").on( "click", () =>{
+        $('.c1.sc, .c2.sc').addClass('checked')
+        $('.c3.sc, .c4.sc, .c5.sc').removeClass('checked')})
+    $(".checkbox-sucesso > div > #rate-3").on("click", () =>{
+        $('.c1.sc, .c2.sc, .c3.sc').addClass('checked')
+        $('.c4.sc, .c5.sc').removeClass('checked')})
+    $(".checkbox-sucesso > div > #rate-4").on("click", () =>{
+        $('.c1.sc, .c2.sc, .c3.sc, .c4.sc').addClass('checked')
+        $('.c5.sc').removeClass('checked')})
+    $(".checkbox-sucesso > div > #rate-5").on("click", () =>{
+        $('.c1.sc, .c2.sc, .c3.sc, .c4.sc, .c5.sc').addClass('checked')});    
 </script>

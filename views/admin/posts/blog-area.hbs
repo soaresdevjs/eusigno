@@ -1,0 +1,33 @@
+<main class="main-container">
+<h1>Postagens no Blog</h1>
+        <div class="postarea-filter">
+            <form action="/admin/posts/blog/buscar" method="get">
+                <label for="data">Data da postagem:</label>
+                <input type="date" name="data" id="data">
+                <button type="submit">Buscar</button>
+            </form>
+        </div>
+    <div class="postarea-container">
+        <div class="postsarea-blogs-container">
+            {{#each posts}}
+                <div class="postsarea-blog">
+                    <div class="postarea-blog-container">
+                        <div class="post-img"><img src="{{imagem}}" alt=""></div>
+                        <h3>{{titulo}}</h3>
+                    </div>
+                    <div class="postarea-buttons">
+                        <div>
+                            <a href="/admin/posts/blog/edit/{{_id}}"><button class="postarea-editbutton">Editar postagem</button></a>
+                            <a href="/admin/posts/blog/delete/{{_id}}"><button class="postarea-deletebutton">Deletar postagem</button></a>
+                        </div>
+                    </div>
+                </div>
+            {{else}}
+            <h2 style="width: 100%;;text-align: center; margin: 10px; color:darkgray">Nenhum post encontrado!</h2>
+            {{/each}}
+        </div>
+    </div>
+    <div class="postsarea-principal">
+        <a href="/admin/posts/blog/adicionar"><button>Criar postagem</button></a>
+    </div>
+</main>

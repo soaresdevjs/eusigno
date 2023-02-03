@@ -1,0 +1,28 @@
+<main class="main-container">
+    <div class="postagem-principal">
+        <h1>Criar Postagem para o Blog</h1>
+        <div class="postagem-container">
+            <form action="/admin/posts/blog/novo" method="post">
+                <div class="postagem-inputs">
+                    <div class="postagem-titulo">
+                        <label for="titulo">Titulo:</label>
+                        <input type="text" name="titulo" required>
+                    </div>
+                    <div class="postagem-imagem">
+                        <label for="imagem">Imagem da capa(URL): </label>
+                        <input type="url" name="imagem" id="imagem" required>
+                    </div>
+                </div>
+                <div class="postagem-mensagem">
+                    <label for="corpo">Corpo da postagem:</label>
+                    <textarea name="corpo" id="corpo" cols="30" rows="10" required></textarea>
+                </div>
+                {{#each erros}}
+                <div class="erros">{{text}}</div>
+                {{else}}
+                {{/each}}
+                <button type="submit">Enviar dados</button>
+            </form>
+        </div>
+    </div>
+</main>

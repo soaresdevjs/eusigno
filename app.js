@@ -5,6 +5,8 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const session = require('express-session');
 const bodyParser = require('body-parser');
+var util= require('util');
+var encoder = new util.TextEncoder('utf-8');
 require('dotenv').config()
 
 //Configurações
@@ -44,7 +46,6 @@ require('dotenv').config()
 
 //Rotas
     require("./routes")(app);
-
 
 const PORT = process.env.PORT || 8087
 app.listen(PORT, () =>{
